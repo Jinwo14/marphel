@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marphel | Vanishing Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>MARPHEL</h1>
+      <p>Private & Ephemeral Chat</p>
+    </header>
+
+    <!-- Join Screen -->
+    <div id="join-screen" class="card">
+      <h3>Start or Join a Chat</h3>
+      <input type="text" id="room-input" placeholder="Enter Room ID (e.g. mafia-123)" />
+      <button id="join-btn">Connect</button>
+    </div>
+
+    <!-- Chat Screen -->
+    <div id="chat-screen" class="card hidden">
+      <div class="chat-header">
+        <span>Room: <strong id="current-room"></strong></span>
+        <div class="header-buttons">
+          <button id="copy-link-btn" class="secondary-btn">🔗 Copy Link</button>
+          <button id="boom-btn" class="danger-btn">💣 BOOM</button>
+        </div>
+      </div>
+
+      <div id="message-box" class="message-box"></div>
+
+      <div class="chat-input-area">
+        <input type="text" id="message-input" placeholder="Type a message..." />
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>

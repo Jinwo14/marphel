@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 480px;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+header h1 {
+  letter-spacing: 4px;
+  color: #38bdf8;
+}
+
+header p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.card {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.hidden {
+  display: none !important;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #0284c7;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background: #0369a1;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.secondary-btn {
+  width: auto;
+  padding: 6px 10px;
+  background: #334155;
+  font-size: 0.8rem;
+}
+
+.secondary-btn:hover {
+  background: #475569;
+}
+
+.danger-btn {
+  width: auto;
+  padding: 6px 10px;
+  background: #ef4444;
+  font-size: 0.8rem;
+}
+
+.danger-btn:hover {
+  background: #dc2626;
+}
+
+.message-box {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #0f172a;
+}
+
+.msg {
+  padding: 8px 12px;
+  border-radius: 8px;
+  max-width: 80%;
+  word-break: break-word;
+}
+
+.msg.you {
+  align-self: flex-end;
+  background: #0284c7;
+}
+
+.msg.peer {
+  align-self: flex-start;
+  background: #334155;
+}
+
+.msg.system {
+  align-self: center;
+  font-size: 0.8rem;
+  color: #f59e0b;
+  text-align: center;
+}
+
+.chat-input-area {
+  display: flex;
+  gap: 8px;
+}
+
+.chat-input-area input {
+  margin-bottom: 0;
+}
+
+.chat-input-area button {
+  width: 80px;
+}
