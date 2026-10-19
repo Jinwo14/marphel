@@ -13,7 +13,6 @@ const sendBtn = document.getElementById('send-btn');
 const boomBtn = document.getElementById('boom-btn');
 const copyLinkBtn = document.getElementById('copy-link-btn');
 
-// Image upload elements
 const imgBtn = document.getElementById('img-btn');
 const imageInput = document.getElementById('image-input');
 
@@ -43,11 +42,11 @@ joinBtn.addEventListener('click', () => {
 copyLinkBtn.addEventListener('click', () => {
   const inviteUrl = `${window.location.origin}/?room=${encodeURIComponent(currentRoomId)}`;
   navigator.clipboard.writeText(inviteUrl).then(() => {
-    alert('Invite link copied to clipboard!');
+    alert('SECURE LINK COPIED TO CLIPBOARD');
   });
 });
 
-// Send Text Message Event
+// Send Text Message
 sendBtn.addEventListener('click', sendMessage);
 messageInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') sendMessage();
@@ -62,42 +61,38 @@ function sendMessage() {
   }
 }
 
-// Image Selection Trigger
+// Trigger Image Upload
 imgBtn.addEventListener('click', () => {
   imageInput.click();
 });
 
-// Handle Image File Selection
 imageInput.addEventListener('change', (e) => {
   const file = e.target.files[0];
   if (file && currentRoomId) {
-    // Limit size to ~5MB to prevent websocket overload
     if (file.size > 5 * 1024 * 1024) {
-      alert('Image is too large. Please select an image smaller than 5MB.');
+      alert('FILE OVERSIZE. Select image under 5MB.');
       return;
     }
 
     const reader = new FileReader();
     reader.onload = function (evt) {
       const base64Image = evt.target.result;
-      // Append image to sender UI
       appendImage('You', base64Image, 'you');
-      // Send image via socket
       socket.emit('send_image', { roomId: currentRoomId, image: base64Image });
     };
     reader.readAsDataURL(file);
-    imageInput.value = ''; // Reset input
+    imageInput.value = '';
   }
 });
 
-// Trigger "Boom" Destroy
+// Boom Action
 boomBtn.addEventListener('click', () => {
-  if (confirm('Are you sure you want to boom/destroy this chat room?')) {
+  if (confirm('EXECUTE EMERGENCY PURGE? All chat data will be destroyed.')) {
     socket.emit('boom_destroy', currentRoomId);
   }
 });
 
-// Socket Event Listeners
+// Socket Listeners
 socket.on('receive_message', (data) => {
   appendMessage(data.sender, data.text, 'peer');
 });
@@ -107,7 +102,7 @@ socket.on('receive_image', (data) => {
 });
 
 socket.on('system_message', (msg) => {
-  appendMessage('System', msg, 'system');
+  appendMessage('SYSTEM', msg, 'system');
 });
 
 socket.on('room_destroyed', (msg) => {
@@ -119,22 +114,21 @@ socket.on('room_destroyed', (msg) => {
   currentRoomId = '';
 });
 
-// Helper: Append Text
+// Helper Functions
 function appendMessage(sender, text, type) {
   const div = document.createElement('div');
   div.classList.add('msg', type);
-  div.innerText = type === 'system' ? text : `${sender}: ${text}`;
+  div.innerText = type === 'system' ? text : `[${sender}]: ${text}`;
   messageBox.appendChild(div);
   messageBox.scrollTop = messageBox.scrollHeight;
 }
 
-// Helper: Append Image
 function appendImage(sender, imageData, type) {
   const div = document.createElement('div');
   div.classList.add('msg', type);
 
   const label = document.createElement('span');
-  label.innerText = `${sender}:`;
+  label.innerText = `[${sender}] CLASSIFIED IMAGE:`;
   label.style.fontWeight = 'bold';
   label.style.display = 'block';
 

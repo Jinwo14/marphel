@@ -3,38 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marphel | Vanishing Chat</title>
+  <title>MARPHEL | Stealth Ops</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Cyber Grid Background -->
+  <div class="cyber-grid"></div>
+
   <div class="app-container">
     <header>
-      <h1>MARPHEL</h1>
-      <p>Private & Ephemeral Chat</p>
+      <h1 class="glitch-title">MARPHEL</h1>
+      <p class="subtitle">EPHEMERAL // ZERO-TRACE COMMUNICATIONS</p>
     </header>
 
     <!-- Join Screen -->
-    <div id="join-screen" class="card">
-      <h3>Start or Join a Chat</h3>
-      <input type="text" id="room-input" placeholder="Enter Room ID (e.g. mafia-123)" />
-      <button id="join-btn">Connect</button>
+    <div id="join-screen" class="card glow-border">
+      <div class="status-indicator"><span class="pulse-dot"></span> SECURE TERMINAL</div>
+      <input type="text" id="room-input" placeholder="ENTER FREQUENCY / ROOM CODE" />
+      <button id="join-btn" class="primary-btn">INITIALIZE LINK</button>
     </div>
 
     <!-- Chat Screen -->
-    <div id="chat-screen" class="card hidden">
+    <div id="chat-screen" class="card glow-border hidden">
       <div class="chat-header">
-        <span>Room: <strong id="current-room"></strong></span>
+        <div class="channel-info">
+          <span class="pulse-dot"></span> FREQ: <strong id="current-room">---</strong>
+        </div>
         <div class="header-buttons">
-          <button id="copy-link-btn" class="secondary-btn">🔗 Copy Link</button>
-          <button id="boom-btn" class="danger-btn">💣 BOOM</button>
+          <button id="copy-link-btn" class="action-btn">🔗 SHARE FREQ</button>
+          <button id="boom-btn" class="danger-btn">💣 PURGE ALL</button>
         </div>
       </div>
 
       <div id="message-box" class="message-box"></div>
 
       <div class="chat-input-area">
-        <input type="text" id="message-input" placeholder="Type a message..." />
-        <button id="send-btn">Send</button>
+        <input type="file" id="image-input" accept="image/*" style="display: none;" />
+        <button id="img-btn" class="action-btn icon-btn" title="Send Classified Image">📷</button>
+        <input type="text" id="message-input" placeholder="Transmit message..." />
+        <button id="send-btn" class="primary-btn">SEND</button>
       </div>
     </div>
   </div>
